@@ -373,6 +373,7 @@ const SecondaryPricingCard = () => {
               <h2 className="text-6xl lg:text-[90px] lg:leading-[82px] tracking-tight font-semibold">
                 $49 <span className="text-4xl">/ year</span>
               </h2>
+              <p className="text-lg text-white-400 mt-2">(~ ₹4,351 INR)</p>
             </div>
             <div className="w-full border-dashed border-border-primary px-6 lg:px-10 py-4 ">
               <PaymentFlow
@@ -461,9 +462,9 @@ const TestimonialsSection = () => {
       content: (
         <div className="space-y-3 text-pretty">
           <p>
-            Okay so there are a few things I genuinely value about OpenSox
-            Pro, and I&apos;ll focus on the core points because everything
-            else is just a natural extension of these.
+            Okay so there are a few things I genuinely value about OpenSox Pro,
+            and I&apos;ll focus on the core points because everything else is
+            just a natural extension of these.
           </p>
           <ul className="list-disc space-y-3 pl-6">
             <li>
