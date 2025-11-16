@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import SidebarItem from "../sidebar/SidebarItem";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { IconWrapper } from "../ui/IconWrapper";
 import {
   XMarkIcon,
@@ -41,15 +41,9 @@ const SIDEBAR_ROUTES = [
   },
 ];
 
-const getSidebarLinkClassName = (currentPath: string, routePath: string) => {
-  const isActive = currentPath === routePath;
-  return `${isActive ? "text-ox-purple" : "text-ox-white"}`;
-};
-
 export default function Sidebar() {
   const { showSidebar, setShowSidebar, isCollapsed, toggleCollapsed } =
     useShowSidebar();
-  const pathname = usePathname();
   const router = useRouter();
   const { isPaidUser } = useSubscription();
 
@@ -74,7 +68,7 @@ export default function Sidebar() {
       }`}
     >
       {/* Mobile header */}
-      <div className="flex justify-between px-4 py-4 border-b border-ox-header xl:hidden bg-ox-sidebar">
+      <div className="flex justify-between items-center h-16 px-4 border-b border-ox-header xl:hidden bg-ox-sideba">
         <div className="flex items-center">
           <Link
             href="/"
@@ -110,11 +104,10 @@ export default function Sidebar() {
         </IconWrapper>
       </div>
 
-      <div className="sidebar-body flex-grow flex-col overflow-y-auto px-3 py-4 space-y-1">
+      <div className="sidebar-body flex-grow flex-col overflow-y-auto px-3 py-4">
         {SIDEBAR_ROUTES.map((route) => {
-          const activeClass = getSidebarLinkClassName(pathname, route.path);
           return (
-            <Link href={route.path} className={activeClass} key={route.path}>
+            <Link href={route.path} key={route.path}>
               <SidebarItem
                 itemName={route.label}
                 icon={route.icon}
@@ -131,14 +124,14 @@ export default function Sidebar() {
         />
         {!isCollapsed && !isPaidUser ? (
           <div
-            className="w-full h-[44px] flex items-center rounded-md cursor-pointer transition-colors px-2 gap-3 pl-3 hover:bg-[#121214]"
+            className="w-full h-[44px] flex items-center rounded-md cursor-pointer transition-colors px-2 gap-3 pl-3 hover:bg-[#292929] group"
             onClick={proClickHandler}
           >
-            <span className="shrink-0 text-[#eaeaea]">
+            <span className="shrink-0 text-[#eaeaea] group-hover:text-white transition-colors">
               <StarIcon className="size-5" />
             </span>
             <div className="flex items-center gap-1">
-              <h1 className="text-xs font-medium text-[#c8c8c8] group-hover:text-ox-purple">
+              <h1 className="text-xs font-medium text-[#c8c8c8] group-hover:text-white transition-colors">
                 Opensox Pro
               </h1>
               <OpensoxProBadge className="px-1.5 py-0.5 scale-75" />
@@ -189,7 +182,7 @@ function ProfileMenu({ isCollapsed }: { isCollapsed: boolean }) {
   return (
     <div className="px-3 py-4 border-t border-ox-header bg-ox-sidebar relative profile-menu-container">
       <div
-        className={`group flex items-center rounded-md bg-ox-content border border-ox-header p-2 transition-all duration-300 ease-out cursor-pointer ${
+        className={`group flex items-center rounded-md bg-ox-profile-card border border-ox-header p-2 transition-all duration-300 ease-out cursor-pointer ${
           isCollapsed ? "justify-center" : "gap-3"
         }`}
         onClick={() => setOpen((s) => !s)}
@@ -211,7 +204,7 @@ function ProfileMenu({ isCollapsed }: { isCollapsed: boolean }) {
       </div>
       {/* Profile Card Dropdown */}
       {!isCollapsed && open && (
-        <div className="absolute bottom-full left-3 right-3 mb-2 bg-ox-content border border-ox-header rounded-lg shadow-xl overflow-hidden z-50">
+        <div className="absolute bottom-full left-3 right-3 mb-2 bg-ox-profile-card border border-ox-header rounded-lg shadow-xl overflow-hidden z-50">
           {/* User Info Section */}
           <div className="p-3 border-b border-ox-header">
             <div className="flex items-center gap-3">
