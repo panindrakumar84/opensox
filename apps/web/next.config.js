@@ -12,6 +12,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@heroicons/react'],
+  },
+  swcMinify: true,
 };
 
 module.exports = nextConfig; 
