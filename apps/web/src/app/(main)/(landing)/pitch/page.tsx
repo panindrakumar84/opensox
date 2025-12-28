@@ -77,6 +77,92 @@ const Pitch = () => {
             </div>
           </div>
 
+          <div className="py-4 border-b border-border px-4 lg:px-[60px]">
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                type: "spring",
+                delay: 0.45,
+              }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <h3 className="text-2xl lg:text-3xl font-medium text-brand-purple-light font-mono mb-3 lowercase">
+                table of contents
+              </h3>
+              <nav>
+                <ul className="space-y-1.5 text-text-secondary font-medium text-md lg:text-xl lowercase inline-block">
+                  <li>
+                    <a
+                      href="#mission-statement"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      mission statement
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#my-goal"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      my goal
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#the-plan"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      the plan
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#philosophies"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      philosophies i follow
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#so-how-small"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      so how small?
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#testimonials"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      what existing investors said
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#questions"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      questions you may have
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#invest"
+                      className="text-text-secondary hover:text-brand-purple-light transition-colors duration-300 underline"
+                    >
+                      how to invest in opensox.ai?
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </motion.div>
+          </div>
+
           {/* The Pitch */}
           <div className="h-full relative border-b border-border">
             <div className="py-8 border-b border-border">
