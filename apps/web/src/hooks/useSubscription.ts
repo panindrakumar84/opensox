@@ -74,6 +74,7 @@ export function useSubscription() {
     isPaidUser,
     subscription,
     isLoading,
+    isFetching,
     refetch,
   };
 }

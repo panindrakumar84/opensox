@@ -6,11 +6,11 @@ import { redirect } from "next/navigation";
 import CheckoutConfirmation from "./checkout-confirmation";
 
 export default function CheckoutWrapper() {
-  const { isPaidUser, isLoading, refetch } = useSubscription();
+  const { isPaidUser, isLoading, isFetching, refetch } = useSubscription();
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    if (!isLoading && !isPaidUser && retryCount < 3) {
+    if (!isLoading && !isFetching && !isPaidUser && retryCount < 3) {
       const timer = setTimeout(() => {
         refetch?.();
         setRetryCount((prev) => prev + 1);
@@ -18,9 +18,9 @@ export default function CheckoutWrapper() {
 
       return () => clearTimeout(timer);
     }
-  }, [isPaidUser, isLoading, retryCount, refetch]);
+  }, [isPaidUser, isLoading, isFetching, retryCount, refetch]);
 
-  if (isLoading || (!isPaidUser && retryCount < 3)) {
+  if (isLoading || isFetching || (!isPaidUser && retryCount < 3)) {
     return (
       <div className="flex flex-col h-screen w-full justify-center items-center">
         <div className="text-white text-xl">
@@ -30,7 +30,7 @@ export default function CheckoutWrapper() {
     );
   }
 
-  if (!isLoading && !isPaidUser && retryCount >= 3) {
+  if (!isLoading && !isFetching && !isPaidUser && retryCount >= 3) {
     redirect("/pricing");
   }
 
