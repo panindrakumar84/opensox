@@ -133,7 +133,7 @@ const Pricing = () => {
   const getDiscountEndDate = () => {
     const today = new Date();
     const endDate = new Date(today);
-    endDate.setDate(today.getDate() + 3);
+    endDate.setDate(today.getDate() + 1);
 
     const day = endDate.getDate();
     const month = endDate.toLocaleDateString("en-US", { month: "long" });
